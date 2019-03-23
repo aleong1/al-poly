@@ -3,26 +3,36 @@ from matrix import *
 
 
 def add_polygon( polygons, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
-    #0-->1-->2
+    #0-->1-->2 counter-clockwise
     add_point(polygons, x0, y0, z0)
     add_point(polygons, x1, y1, z1)
     add_point(polygons, x2, y2, z2)
 
 def draw_polygons( polygons, screen, color ):
     if len(polygons) < 3:
-        print 'Need at least 3 points to draw'
+        print ('Need at least 3 points to draw')
         return
 
     point = 0
-    while point < len(matrix) - 2:
-        draw_line( int(matrix[point][0]),
-                   int(matrix[point][1]),
-                   int(matrix[point][2]),
-                   int(matrix[point+1][0]),
-                   int(matrix[point+1][1]),
-                   int(matrix[point+1][2]),
+    while point < len(polygons) - 2:
+        draw_line( int(polygons[point][0]),
+                   int(polygons[point][1]),
+                   int(polygons[point+1][0]),
+                   int(polygons[point+1][1]),
                    screen, color)
-        point+= 2
+
+        draw_line( int(polygons[point+1][0]),
+                   int(polygons[point+1][1]),
+                   int(polygons[point+2][0]),
+                   int(polygons[point+2][1]),
+                   screen, color)
+
+        draw_line( int(polygons[point+2][0]),
+                   int(polygons[point+2][1]),
+                   int(polygons[point][0]),
+                   int(polygons[point][1]),
+                   screen, color)
+        point+= 3
 
 
 def add_box( polygons, x, y, z, width, height, depth ):
