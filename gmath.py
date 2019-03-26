@@ -6,7 +6,11 @@ from display import *
 #vector functions
 #normalize vetor, should modify the parameter
 def normalize(vector):
-    pass
+    x = vector[0]
+    y = vector[1]
+    z = vector[2]
+    mag = math.sqrt(x*x+y*y=z*z)
+    
 
 #Return the dot porduct of a . b
 def dot_product(a, b):
