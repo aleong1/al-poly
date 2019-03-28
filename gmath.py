@@ -30,9 +30,21 @@ def dot_product(a, b):
 
     dp = magA * magB * math.cos()
     
-    return 0
+    return dp
 
 #Calculate the surface normal for the triangle whose first
 #point is located at index i in polygons
 def calculate_normal(polygons, i):
+    if i == 0:
+        a = polygons[i+1]
+        b = polygons[len(polygons)]
+    elif i == len(polygons):
+        a = polygons[i-1]
+        b = polygons[0]
+    else:
+        a = polygons[i-1]
+        b = polygons[i+1]
+
+    
+
     return None
